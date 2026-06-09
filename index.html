@@ -101,6 +101,7 @@
         const dots = $(".dot")
 
         let index = 0;
+        let slideInterval;
 
         function moveSlide(){
             slides.stop(true, true).fadeOut(300)
@@ -109,26 +110,44 @@
             dots.eq(index).addClass("on")
         }
 
-        $(".next").on("click",function(){
+        function autoSlide(){
+            clearInterval(slideInterval);
+
+            slideInterval = setInterval(function(){
                 index++
-                if(index >= slides.length){
-                    index = 0
+                if( index >= slides.length ){
+                    index = 0;
                 }
                 moveSlide();
-            })
 
-            $(".prev").on("click",function(){
-                index--
-                if(index < 0){
-                    index = slides.length - 1 
-                }
-                moveSlide();
-            })
+            }, 3000)
+    }
 
-            dots.on("click",function(){
-                index = $(this).index()
-                moveSlide()
-            })
+        $(".next").on("click",function(){
+            index++
+            if(index >= slides.length){
+                index = 0
+            }
+            moveSlide();
+            autoSlide();
+        })
+
+        $(".prev").on("click",function(){
+            index--
+            if(index < 0){
+                index = slides.length - 1 
+            }
+            moveSlide();
+            autoSlide();
+        })
+
+        dots.on("click",function(){
+            index = $(this).index()
+            moveSlide()
+            autoSlide();
+        })
+
+        autoSlide();
     </script>
 </body>
 </html>
