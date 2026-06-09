@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시몬스 copy</title>
+     <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <header>
+        <div class="logomenu">
+            <div class="logo"><img src="./image/imgi_36_logo..png" alt="로고 이미지"/></div>
+            <div class="info">
+                <ul class="infognb">
+                    <li><a href="#">매장 안내</a></li>
+                    <li style="border-right: 1px solid #ddd; padding-right: 20px;"><a href="#">팩토리움 투어 예약</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li style="border-right: 1px solid #ddd; padding-right: 20px;"><a href="#">고객센터</a></li>
+                </ul>
+                <ul class="icongnb">
+                    <li><a href="https://www.instagram.com/simmonskorea/?hl=ko"><img src="./image/imgi_30_default.svg" alt="인스타 아이콘"></a></li>
+                    <li><a href="https://www.youtube.com/@simmonskorea"><img src="./image/imgi_31_default.svg" alt="유튜브 아이콘"></a></li>
+                    <li><a href="https://blog.naver.com/simmonskorea"><img src="./image/imgi_32_default.svg" alt="블로그 아이콘"></a></li>
+                    <li><a href="https://pf.kakao.com/_GxaMyT"><img src="./image/imgi_2_ico_kakaotalk_small..png" alt="카카오 아이콘"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="iconmenu">
+            <ul class="gnb">
+                <li style="border-right: 1px solid #ddd; padding-right: 20px;"><a href="#">브랜드 소개</a></li>
+                <li><a href="#">전체보기</a></li>
+                <li><a href="#">뷰티레스트 블랙</a></li>
+                <li><a href="#">뷰티레스트 매트리스</a></li>
+                <li><a href="#">프레임</a></li>
+                <li><a href="#">협탁</a></li>
+                <li><a href="#">파운데이션</a></li>
+                <li><a href="#">펫 메트리스</a></li>
+                <li><a href="#">베딩</a></li>
+                <li><a href="#">프래그런스</a></li>
+                <li><a href="#">가구</a></li>
+                <li><a href="#">아웃렛</a></li>
+            </ul>
+            <div class="icongnb">
+                <a href="#"><img src="./image/imgi_37_ico-cart..svg" alt="장바구니 아이콘"></a>
+                <a href="#"><img src="./image/imgi_33_default.svg" alt="검색 아이콘"></a>
+            </div>
+        </div>   
+    </header>
+    <!-- 헤더 모바일 -->
+    <div class="mo">
+        <div class="momenu"><a href="#"><img src="./image/imgi_29_default.svg" alt="메뉴 이미지"></a></div>
+        <div class="logo"><img src="./image/imgi_36_logo..png" alt="로고 이미지"/></div>
+        <div class="icongnb">
+                <a href="#"><img src="./image/imgi_37_ico-cart..svg" alt="장바구니 아이콘"></a>
+                <a href="#"><img src="./image/imgi_33_default.svg" alt="검색 아이콘"></a>
+        </div>
+    </div>
+    <section class="banner">
+         <div class="slider">
+            <div class="slide">
+                <img src="./image/imgi_3_02_시몬스_PC_banner_통합기획전_01.jpg" alt="image01">
+            </div>
+            <div class="slide">
+                <img src="./image/imgi_4_01_시몬스_PC_banner_온라인기획전.jpg" alt="image01">
+            </div>
+            <div class="slide">
+                <img src="./image/imgi_5_시몬스_PC_banner_온라인체험존.jpg" alt="image01">
+            </div>
+            <div class="slide">
+                <img src="./image/imgi_6_PC_banner_시몬스페이.jpg" alt="image01">
+            </div>
+            <div class="slide">
+                <img src="./image/imgi_7_03_시몬스_PC_banner_오프라인기획전_01-1.jpg" alt="image01">
+            </div>
+
+             <!-- 좌우버튼 -->
+        <button class="arrow prev"><img src="./image/imgi_38_ico-hero-prev..png" alt=""></button>
+        <button class="arrow next"><img src="./image/imgi_39_ico-hero-next..png" alt=""></button>
+
+        <!-- 도트 -->
+        <div class="dotwrap">
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+    </section>
+
+    <script>
+        const slides = $(".slide")
+        const dots = $(".dot")
+
+        let index = 0;
+
+        function moveSlide(){
+            slides.stop(true, true).fadeOut(300)
+            slides.eq(index).stop(true, true).fadeIn(300)
+            dots.removeClass("on")
+            dots.eq(index).addClass("on")
+        }
+
+        $(".next").on("click",function(){
+                index++
+                if(index >= slides.length){
+                    index = 0
+                }
+                moveSlide();
+            })
+
+            $(".prev").on("click",function(){
+                index--
+                if(index < 0){
+                    index = slides.length - 1 
+                }
+                moveSlide();
+            })
+
+            dots.on("click",function(){
+                index = $(this).index()
+                moveSlide()
+            })
+    </script>
+</body>
+</html>
